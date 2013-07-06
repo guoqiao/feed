@@ -1,0 +1,51 @@
+{% extends "feed.html" %}
+
+{% block left %}
+<a href="{{obj.link}}" target="_blank" title="查看原文">
+<h3 class="item-title">{{obj.title}}</h3>
+</a>
+
+<p>
+<small class="muted">
+    发布于 <span class="item-published">{{obj.published}}</span>
+    来自 <a href="{{obj.feed.get_absolute_url}}">{{obj.feed.title}}</a>
+    {% if obj.author %}
+    作者 <span class="item-author">{{obj.author}}</span>
+    {% endif %}
+</small>
+</p>
+
+<div class="well item-content">
+<div class="pull-right kindleWidget"
+    style="display:inline-block;padding:3px;cursor:pointer;font-size:11px;font-family:Arial;white-space:nowrap;line-height:1;border-radius:3px;border:#ccc thin solid;color:black;background:transparent url('https://d1xnn692s7u6t6.cloudfront.net/button-gradient.png') repeat-x;background-size:contain;">
+    <img style="vertical-align:middle;margin:0;padding:0;border:none;"
+    src="https://d1xnn692s7u6t6.cloudfront.net/white-25.png" />
+    <span style="vertical-align:middle;margin-left:5px;">Send to Kindle</span>
+</div>
+{{obj.content|safe}}
+</div>
+{% endblock %}
+
+{% block css_extra %}
+{{block.super}}
+<style type="text/css">
+.item-content > p:last-child {
+    display: none;
+}
+</style>
+{% endblock %}
+
+{% block js_extra %}
+{{block.super}}
+<script type="text/javascript" src="https://d1xnn692s7u6t6.cloudfront.net/widget.js"></script>
+<script type="text/javascript">
+(function k(){
+ window.$SendToKindle&&window.$SendToKindle.Widget?$SendToKindle.Widget.init({
+     "content":".item-content",
+     "exclude":".item-content > p:last-child",
+     "title":".item-title",
+     "author":".item-author",
+     "published":".item-published"}):setTimeout(k,500);})();
+</script>
+{% endblock %}
+

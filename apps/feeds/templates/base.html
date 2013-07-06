@@ -1,0 +1,53 @@
+{% extends "static.html" %}
+
+{% block header %}
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="{% url home %}"></a>
+
+            <ul class="nav">
+                <li class=""><a href=""><i class="icon-fire"></i>热门</a></li>
+                <li class=""><a href=""><i class="icon-star-empty"></i>我的订阅</a></li>
+            </ul>
+
+            <form class="navbar-search" action="" method="get">
+                <input class="search-query" name="q" value="{{q}}" placeholder="搜索RSS" type="text" >
+            </form>
+            <ul class="nav pull-right">
+                {% if user.is_authenticated %}
+                <li class="{{active_upload}}"><a href="{% url add %}">
+                    <i class="icon-plus"></i>RSS
+                </a></li>
+                <li class=""><a href="">guoqiao@gmail.com</a></li>
+                {% else %}
+                <li>
+                    <a href="" target='_blank'>
+                        <i class="icon-user icon-white"></i>登录
+                    </a>
+                </li>
+                {% endif %}
+                <li class="{{active_contact}}">
+                    <a href="">
+                        <i class="icon-retweet icon-white"></i>反馈
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<div class="container">
+    <ul class='inline'>
+        <li><a target='_blank' href="http://www.weibo.com/readfreeme">新浪微博</a></li>
+        <li><a target='_blank' href="http://www.douban.com/group/readfree.me/">豆瓣小组</a></li>
+        <li><a target='_blank' href="https://github.com/guoqiao">开源代码</a></li>
+        <li><a target='_blank' href="">常见问题</a></li>
+        <li><a target='_blank' href="">格式转换</a></li>
+        <li><small class="muted">QQ群: 312929250</small></li>
+        <li class='pull-right'><a href="#">回到顶部</a></li>
+    </ul>
+</div>
+{% endblock %}

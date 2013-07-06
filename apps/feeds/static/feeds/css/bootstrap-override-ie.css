@@ -1,0 +1,7 @@
+.navbar-inner {
+    filter: None;
+}
+
+.navbar .nav > .active > a, .navbar .nav > .active > a:hover, .navbar .nav > .active > a:focus {
+    background-color: #324A69;
+}

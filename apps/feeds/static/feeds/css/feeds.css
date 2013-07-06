@@ -1,0 +1,154 @@
+html, body, #container {
+    height: 100%;
+}
+
+body > #container
+{
+    height: auto;
+    min-height: 100%;
+}
+
+#footer {
+    clear: both;
+    position: relative;
+    z-index: 10;
+    height: 3em;
+    margin-top: -3em;
+    padding-top: 20px;
+    background-color: white;
+}
+
+#content { padding-bottom: 3em; }
+
+.errorlist li{
+    color: red;
+}
+
+.margin-medium {
+    margin: 10px;
+}
+
+ul.book-index li {
+    position: relative;
+    width: 200px;
+    height: 190px;
+    float: left;
+    padding: 5px 5px 0px 5px;
+    margin: 10px;
+}
+
+ul.book-similar li {
+    position: relative;
+    width: 100px;
+    height: 150px;
+    float: left;
+    padding: 5px 5px 0px 0px;
+    margin: 0px;
+}
+
+.book-cover {
+    max-width: 100px;
+    max-height: 150px;
+}
+
+.meta {
+    position: absolute;
+    bottom: 5px;
+}
+
+.douban {
+    position: absolute;
+    right: 20px;
+}
+
+/*tags*/
+.tags ul{
+    margin:1em 0;
+    padding:.5em 10px;
+    text-align:center;
+    background:#71b5e9 url(../img/bg_tags.gif) repeat-x;
+}
+.tags li{
+    margin:0;
+    padding:0;
+    list-style:none;
+    display:inline;
+    font-family: "Microsoft YaHei";
+}
+.tags li a{
+    text-decoration:none;
+    color:#fff;
+    padding:0 2px;
+}
+
+.tags li a:hover{
+    color:#cff400;
+}
+
+.tag1{font-size:120%;}
+.tag2{font-size:140%;}
+.tag3{font-size:160%;}
+.tag4{font-size:180%;}
+.tag5{font-size:200%;}
+
+/*message*/
+.messages {
+    list-style-type: none;
+    top: 50px;
+    right: 10px;
+    position: absolute;
+    z-index: 200;
+}
+
+.messages li {
+    margin: 10px 0;
+    padding: 18px 28px;
+    border: 1px solid #ccc;
+    font-size: 16px
+}
+
+.messages li:hover {
+    -webkit-transform: scale(1.1);
+       -moz-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+         -o-transform: scale(1.1);
+            transform: scale(1.1);
+    cursor: pointer;
+}
+
+.pro {
+    vertical-align: middle;
+}
+
+#id_goto {
+    width: 45px;
+    margin-left: 20px;
+}
+
+.form-tag {
+    margin-top: 20px;
+}
+
+.book-form input,textarea {
+    width: 96%;
+}
+
+.required label {
+    /*color: red;*/
+}
+
+.required label:before {
+    content:"*";
+}
+.helptext {
+    font-size: 12px;
+    color: #999;
+}
+
+td input[type='text'] {
+    width: 95%;
+}
+
+.right {
+    padding-left: 30px;
+}

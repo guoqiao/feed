@@ -1,0 +1,26 @@
+{% extends "split.html" %}
+
+{% block left %}
+<h2>{{obj.title}}</h2>
+<ul class="unstyled well">
+{% for item in obj.item_set.all %}
+<li class='item'>
+<a href="{{item.get_absolute_url}}"><h3>{{item.title}}</h3></a>
+{% if item.published %}
+<small class="muted">{{item.published}}</small>
+{% endif %}
+<div>{{item.description|safe}}</div>
+<hr />
+</li>
+{% endfor %}
+</ul>
+{% endblock %}
+
+{% block css_extra %}
+{{block.super}}
+<style type="text/css">
+.right {
+    margin-top: 50px;
+}
+</style>
+{% endblock %}

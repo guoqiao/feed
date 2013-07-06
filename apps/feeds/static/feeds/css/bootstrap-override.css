@@ -1,0 +1,99 @@
+body {
+    margin-top: 50px;
+    background: url("../img/cream_pixels.png");
+    font-family: "Microsoft YaHei","Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+
+a {
+    color: #4b73a6;
+    text-decoration: none;
+    -webkit-transition: color .1s linear;
+    -moz-transition: color .1s linear;
+    -ms-transition: color .1s linear;
+    -o-transition: color .1s linear;
+    transition: color .1s linear;
+}
+
+.navbar-inner {
+    text-align: center;
+    background: rgb(50, 74, 105);
+    background: -o-linear-gradient(rgba(50, 74, 105, 0.8), rgba(50, 74, 105, 1));
+    background: -webkit-linear-gradient(rgba(50, 74, 105, 0.8), rgba(50, 74, 105, 1));
+    background: -moz-linear-gradient(rgba(50, 74, 105, 0.8), rgba(50, 74, 105, 1));
+    background: -ms-linear-gradient(rgba(50, 74, 105, 0.8), rgba(50, 74, 105, 1));
+    width: 100%;
+    box-shadow: 0 1px 3px rgba(0,0,0,.2);
+    border-bottom: 0.2em solid indianRed;
+}
+
+.navbar .nav > li > a {
+    color: #DDD;
+    text-shadow: 0 0 0 white;
+    /*font-size: 17px;*/
+}
+
+.brand
+{
+    background: url(../img/logo24x120.png) no-repeat left center;
+    height: 24px;
+    width: 90px;
+}
+
+.navbar .brand {
+    text-shadow: 0 0 0 white;
+    color: white;
+}
+
+.navbar .nav > li > a:hover, .navbar .nav > li > a:focus, .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    color: #fff;
+    background: -moz-radial-gradient(center bottom, ellipse cover,  rgba(255,255,255,.4) 0%, rgba(50, 74, 105,0) 40%);
+    background: -webkit-radial-gradient(center bottom, ellipse cover,  rgba(255,255,255,.4) 0%,rgba(50, 74, 105,0) 40%);
+    background: -o-radial-gradient(center bottom, ellipse cover,  rgba(255,255,255,.4) 0%,rgba(50, 74, 105,0) 40%);
+    background: -ms-radial-gradient(center bottom, ellipse cover,  rgba(255,255,255,.4) 0%,rgba(50, 74, 105,0) 40%);
+    background: radial-gradient(center bottom, ellipse cover,  rgba(255,255,255,.4) 0%,rgba(50, 74, 105,0) 40%);
+}
+
+#account-dropdown li a:hover {
+    background: #08c;
+}
+
+.navbar input.search-query {
+    padding: 5px 9px 3px 27px;
+    margin-top: 2px;
+    background: url(../img/search.png) 6px 5px no-repeat rgba(255, 255, 255, 0.3);
+    -webkit-transition:width .3s ease-in-out;
+    -moz-transition:   width .3s ease-in-out;
+    -ms-transition:    width .3s ease-in-out;
+    -o-transition:     width .3s ease-in-out;
+    border: 0;
+    width: 180px;
+}
+
+.navbar input.search-query:focus, .navbar input.search-query.focused {
+    width: 240px;
+    background-position: 5px -40px;
+    background-color: white;
+}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #CCC;
+}
+
+input:-moz-placeholder, textarea:-moz-placeholder {
+    color: #CCC;
+}
+
+.container .credit {
+    margin: 20px 0;
+}
+
+.dropdown-menu li a {
+    text-align: left;
+}
+
+.navbar .nav li.dropdown.open > .dropdown-toggle,
+.navbar .nav li.dropdown.active > .dropdown-toggle,
+.navbar .nav li.dropdown.open.active > .dropdown-toggle {
+    color: white;
+    background-color: transparent;
+}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row-fluid">
+    <div class="span8 left">
+        {% block left %}{% endblock %}
+    </div>
+    <div class="span4 right">
+        {% block right %}
+        <h4><i class="icon-tag"></i>标签</h4>
+        <ul class="unstyled">
+            <li>科技</li>
+            <li>社会</li>
+            <li>家居</li>
+            <li>亲子</li>
+        </ul>
+        {% endblock %}
+    </div>
+</div>
+{% endblock %}

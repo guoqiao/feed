@@ -1,0 +1,26 @@
+django==1.4.5
+south
+path.py
+requests
+gunicorn
+unidecode
+Werkzeug
+django-annoying
+python-dateutil
+markdown
+celery
+django-celery
+django-kombu
+django-model-utils
+git+https://github.com/guoqiao/django-taggit.git
+git+https://github.com/guoqiao/django-statics.git
+git+https://github.com/derek-schaefer/django-json-field.git
+git+https://github.com/django-extensions/django-extensions.git
+
+# possible
+#python-ldap
+#django-auth-ldap
+#django-wsgiserver
+#django-crispy-forms
+#django-taggit-templatetags
+#python-gflags

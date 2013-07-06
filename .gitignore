@@ -1,4 +1,15 @@
 *.log
 *.pot
 *.pyc
-local_settings.py
+*.swp
+*.db
+*.save
+db.sqlite
+*~
+local.py
+which.py
+fabsettings.py
+ENV
+media
+/static
+silk
