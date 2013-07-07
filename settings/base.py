@@ -154,6 +154,7 @@ INSTALLED_APPS = (
     'statics',
     #'accounts',
     'feeds',
+    'opf',
 )
 
 import djcelery

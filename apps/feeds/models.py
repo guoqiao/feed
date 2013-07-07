@@ -33,8 +33,8 @@ class Common(models.Model):
 class Feed(Common):
 
     url = models.URLField(unique=True) # rss url
-    etag = models.CharField(max_length=50) #6c132-941-ad7e3080
-    modified = models.DateTimeField(null=True)
+    etag = models.CharField(max_length=50,blank=True) #6c132-941-ad7e3080
+    modified = models.DateTimeField(blank=True,null=True)
     parsed = models.DateTimeField(null=True)
     status = models.IntegerField(default=0)
     tags = TaggableManager(verbose_name='标签',help_text='关键字之间用英文逗号分隔',blank=True)
@@ -49,6 +49,9 @@ class Feed(Common):
     @models.permalink
     def get_absolute_url(self):
         return ('feed',[self.pk])
+
+    def recent(self):
+        return self.item_set.all()[:5]
 
     def parse(self):
         self.parsed = datetime.now()

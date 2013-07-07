@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" version="2.0" unique-identifier="uuid_id">
+<metadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:opf="http://www.idpf.org/2007/opf" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:calibre="http://calibre.kovidgoyal.net/2009/metadata" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<dc:title>readfree-2013-07-08</dc:title>
+<dc:creator>readfree.me</dc:creator>
+<dc:subject>readfree.me</dc:subject>
+<dc:language>zh-cn</dc:language>
+<dc:date>2013-07-08</dc:date>
+<dc:contributor>readfree.me [http://readfree.me]</dc:contributor>
+<dc:type>RSS Feed</dc:type>
+<dc:format>Text/html(.xhtml,.html)</dc:format>
+<meta name="cover" content="cover-image"/>
+</metadata>
+<manifest>
+<item href="toc.ncx" id="ncx" media-type="application/x-dtbncx+xml" />
+<item href="cover.html" id="cover" media-type="application/xhtml+xml"/>
+<item href="toc.html" id="toc" media-type="application/xhtml+xml"/>
+<item href="content.html" id="content" media-type="application/xhtml+xml"/>
+<item href="cover.jpg" id="cover-image" media-type="image/jpeg" />
+</manifest>
+<spine toc="ncx">
+<itemref idref="cover"/>
+<itemref idref="toc"/>
+<itemref idref="content" />
+</spine>
+<guide>
+<reference href="toc.html" type="text" title="table of contents"/>
+</guide>
+</package>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+<head>
+<meta content="readfree.me" name="dtb:uid"/>
+<meta content="2" name="dtb:depth"/>
+<meta content="0" name="dtb:totalPageCount"/>
+<meta content="0" name="dtb:maxPageNumber"/>
+</head>
+<docTitle><text>readfree-{% now "Y-m-d" %}</text></docTitle>
+<docAuthor><text>readfree.me</text></docAuthor>
+<navMap>
+<navPoint id="toc" playOrder="0">
+<navLabel>
+<text>Contens</text>
+</navLabel>
+<content src="toc.html"/>
+</navPoint>
+
+{% for feed in feeds %}
+<navPoint id="feed{{feed.pk}}" playOrder="{{forloop.counter}}">
+<navLabel>
+    <text>{{feed.title}}</text>
+</navLabel>
+<content src="content.html#feed{{feed.pk}}"/>
+</navPoint>
+{% endfor %}
+
+</navMap>
+</ncx>

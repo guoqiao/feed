@@ -12,4 +12,4 @@ fabsettings.py
 ENV
 media
 /static
-silk
+out
