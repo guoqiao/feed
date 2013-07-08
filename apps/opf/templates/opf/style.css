@@ -202,7 +202,7 @@ text-decoration: none;
 
 /*==KF8 specific here ==*/
 
-@media amzn-kf8{ 
+@media amzn-kf8{
 
 span.dropcap {
 font-size: 300%;
@@ -217,7 +217,7 @@ p.clearit
 clear: both;
 }
 
-ol, ul, li, dl, dt, dd 
+ol, ul, li, dl, dt, dd
 {
 margin: 0;
 padding: 0;
