@@ -6,7 +6,7 @@
 <meta content="0" name="dtb:totalPageCount"/>
 <meta content="0" name="dtb:maxPageNumber"/>
 </head>
-<docTitle><text>readfree-{% now "Y-m-d" %}</text></docTitle>
+<docTitle><text>readfree-{% now "Ymd" %}</text></docTitle>
 <docAuthor><text>readfree.me</text></docAuthor>
 <navMap>
 <navPoint id="toc" playOrder="0">
@@ -16,7 +16,7 @@
 <content src="toc.html"/>
 </navPoint>
 
-{% for feed in feeds %}
+{% for feed in user.feed_set.all %}
 <navPoint id="feed{{feed.pk}}" playOrder="{{forloop.counter}}">
 <navLabel>
     <text>{{feed.title}}</text>
