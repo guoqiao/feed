@@ -18,8 +18,8 @@ vertical-align: baseline;
 /*===Body Presentation and Margins===*/
 body
 {
-text-align: justify;
-line-height: 120%;
+/*text-align: justify;*/
+/*line-height: 120%;*/
 }
 
 /*===Headings===*/

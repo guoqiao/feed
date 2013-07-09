@@ -17,13 +17,17 @@ OUT = settings.PROJ_ROOT/'out'
 def build_for_user(user):
     print 'building for user:%s' % user
     out = OUT # TODO
+    ctx = {'user':user}
+    ctx['feeds'] = user.feed_set.all()
+    ctx['title'] = 'readfree.me'
+    ctx['site'] = 'http://readfree.me'
     for doc in OPF.walkfiles():
         rp = OPF.relpathto(doc)
         r = out/rp
         r.parent.makedirs_p()
         if doc.ext in ['.html','.opf','.ncx']:
             print 'rendering',rp
-            s = r2s(doc,{'user':user})
+            s = r2s(doc,ctx)
             r.write_text(s,encoding='utf-8')
         else:
             print 'copying',rp

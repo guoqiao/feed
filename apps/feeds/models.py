@@ -53,7 +53,7 @@ class Feed(Common):
     def recent(self):
         return self.item_set.all()[:5]
 
-    def parse(self):
+    def update(self):
         self.parsed = datetime.now()
         d = fp.parse(self.url,etag=self.etag,modified=self.modified)
         # {'feed': {}, 'bozo': 1, 'bozo_exception': error(10054, ''), 'entries': []}
