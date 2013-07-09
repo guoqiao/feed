@@ -1,0 +1,27 @@
+<li class='feed'>
+    <div class="btn-group pull-right">
+        <button class="btn btn-mini btn-info">
+            <i class="icon-star-empty"></i>订阅
+        </button>
+        {% if user.is_superuser %}
+        <a href="{% url feed_clear obj.pk %}"
+            onclick="return confirm('确定更新?');"
+            class="btn btn-mini btn-success">
+            <i class="icon-refresh"></i>更新</a>
+        <a href="{% url feed_delete obj.pk %}"
+            onclick="return confirm('确定删除?');"
+            class="btn btn-mini btn-danger">
+            <i class="icon-trash"></i>删除</a>
+        {% endif %}
+    </div>
+    <a href="{% url feed obj.pk %}">
+    <h3>{{obj.title}}</h3>
+    </a>
+    <blockquote>{{obj.description}}</blockquote>
+    <small class='muted'>
+        更新于 {{obj.parsed}},
+        已订阅 {{obj.users.count}},
+        文章数 {{obj.item_set.count}},
+        <a href="{{obj.get_absolute_url}}" target="_blank">直接访问...</a>
+    </small>
+</li>

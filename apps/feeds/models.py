@@ -37,6 +37,7 @@ class Feed(Common):
     modified = models.DateTimeField(blank=True,null=True)
     parsed = models.DateTimeField(null=True)
     status = models.IntegerField(default=0)
+    full = models.IntegerField(default=0)
     tags = TaggableManager(verbose_name='标签',help_text='关键字之间用英文逗号分隔',blank=True)
     users =models.ManyToManyField(User,blank=True)
 
@@ -71,7 +72,7 @@ class Feed(Common):
             print d.debug_message
             return
         if 'etag' in d:
-            self.etag = d.etag
+            self.etag = d.etag.strip('"').strip("'")
         if 'modified_parsed' in d:
             self.modified = mkdt(d.modified_parsed)
 
@@ -102,8 +103,12 @@ class Feed(Common):
             item.title = e.get('title','')
             item.author = e.get('author','')
             item.description = e.get('description','')
-            #item.content = e.get('summary_detail','')
-            item.make_full_text()
+            if self.full and 'content' in e:
+                for c in  e.content:
+                    item.content += c.get('value','')
+                print item.content
+            else:
+                item.make_full_text()
             if 'published_parsed' in e:
                 item.published = mkdt(e.published_parsed)
             item.save()

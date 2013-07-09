@@ -1,27 +1,37 @@
-{% extends "feed.html" %}
+{% extends "feeds/base.html" %}
 
-{% block left %}
-<a href="{{obj.link}}" target="_blank" title="查看原文">
+{% block content %}
 <h3 class="item-title">{{obj.title}}</h3>
-</a>
-
-<p>
-<small class="muted">
-    发布于 <span class="item-published">{{obj.published}}</span>
-    来自 <a href="{{obj.feed.get_absolute_url}}">{{obj.feed.title}}</a>
+<div class="row-fluid">
+    <div class="span8">
+<ul class="inline unstyled muted">
+    <li>
+    来自: <a href="{{obj.feed.get_absolute_url}}">{{obj.feed.title}}</a>
+    </li>
     {% if obj.author %}
-    作者 <span class="item-author">{{obj.author}}</span>
+    <li>
+    作者: <span class="item-author">{{obj.author}}</span>
+    </li>
     {% endif %}
-</small>
-</p>
-
-<div class="well item-content">
+    <li>
+    发布于: <span class="item-published">{{obj.published}}</span>
+    </li>
+    <li>
+    <a href="{{obj.link}}" target="_blank">阅读原文...</a>
+    </li>
+</ul>
+    </div>
+    <div class="span4">
 <div class="pull-right kindleWidget"
     style="display:inline-block;padding:3px;cursor:pointer;font-size:11px;font-family:Arial;white-space:nowrap;line-height:1;border-radius:3px;border:#ccc thin solid;color:black;background:transparent url('https://d1xnn692s7u6t6.cloudfront.net/button-gradient.png') repeat-x;background-size:contain;">
     <img style="vertical-align:middle;margin:0;padding:0;border:none;"
     src="https://d1xnn692s7u6t6.cloudfront.net/white-25.png" />
     <span style="vertical-align:middle;margin-left:5px;">Send to Kindle</span>
 </div>
+    </div>
+</div>
+
+<div class="well item-content">
 {{obj.content|safe}}
 </div>
 {% endblock %}
@@ -29,8 +39,19 @@
 {% block css_extra %}
 {{block.super}}
 <style type="text/css">
-.item-content > p:last-child {
-    display: none;
+.kindleWidget {
+    display:inline-block;
+    padding:3px;
+    cursor:pointer;
+    font-size:11px;
+    font-family:Arial;
+    white-space:nowrap;
+    line-height:1;
+    border-radius:3px;
+    border:#ccc thin solid;
+    color:black;
+    background:transparent url('https://d1xnn692s7u6t6.cloudfront.net/button-gradient.png') repeat-x;
+    background-size:contain;
 }
 </style>
 {% endblock %}

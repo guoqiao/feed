@@ -9,11 +9,22 @@ from . import tasks  as t
 
 def home(request):
     objs = m.Feed.objects.all()
-    return render(request, 'home.html', {'objs': objs})
+    return render(request, 'feeds/home.html', {'objs': objs})
 
 def feed(request,pk):
     obj = m.Feed.objects.get(pk=pk)
-    return render(request, 'feed.html', {'obj': obj})
+    return render(request, 'feeds/feed.html', {'obj': obj})
+
+@login_required
+def feed_clear(request,pk):
+    obj = m.Feed.objects.get(pk=pk)
+    obj.item_set.all().delete()
+    obj.etag = ""
+    obj.modified = None
+    obj.save()
+    t.parse.delay(obj.url)
+    messages.success(request,'正在更新')
+    return redirect('home')
 
 @login_required
 def feed_delete(request,pk):
@@ -24,7 +35,7 @@ def feed_delete(request,pk):
 
 def item(request,pk):
     obj = m.Item.objects.get(pk=pk)
-    return render(request, 'item.html', {'obj': obj})
+    return render(request, 'feeds/item.html', {'obj': obj})
 
 def add(request):
     F = f.FeedForm
@@ -38,4 +49,4 @@ def add(request):
             messages.info(request,'正在解析,稍等片刻:)')
             return redirect('home')
     ctx = {'form':form}
-    return render(request, 'add.html', ctx)
+    return render(request, 'feeds/add.html', ctx)

@@ -1,11 +1,13 @@
-{% extends "split.html" %}
+{% extends "feeds/split.html" %}
 
 {% block left %}
-<h2>{{obj.title}}</h2>
+<ul class="unstyled well">
+{% include "feeds/feed_meta.html"%}
+</ul>
 <ul class="unstyled well">
 {% for item in obj.item_set.all %}
 <li class='item'>
-<a href="{{item.get_absolute_url}}"><h3>{{item.title}}</h3></a>
+<a href="{{item.get_absolute_url}}"><h4>{{item.title}}</h4></a>
 {% if item.published %}
 <small class="muted">{{item.published}}</small>
 {% endif %}
@@ -14,13 +16,4 @@
 </li>
 {% endfor %}
 </ul>
-{% endblock %}
-
-{% block css_extra %}
-{{block.super}}
-<style type="text/css">
-.right {
-    margin-top: 50px;
-}
-</style>
 {% endblock %}

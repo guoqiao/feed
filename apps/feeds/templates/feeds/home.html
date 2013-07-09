@@ -1,0 +1,11 @@
+{% extends 'feeds/split.html' %}
+
+{% block left %}
+<ul class="unstyled well">
+{% for obj in objs %}
+{% include "feeds/feed_meta.html"%}
+<hr />
+{% endfor %}
+</ul>
+{% endblock %}
+
