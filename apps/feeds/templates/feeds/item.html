@@ -2,32 +2,30 @@
 
 {% block content %}
 <h3 class="item-title">{{obj.title}}</h3>
-<div class="row-fluid">
+<div class="row-fluid item-meta">
     <div class="span8">
-<ul class="inline unstyled muted">
-    <li>
-    来自: <a href="{{obj.feed.get_absolute_url}}">{{obj.feed.title}}</a>
-    </li>
-    {% if obj.author %}
-    <li>
-    作者: <span class="item-author">{{obj.author}}</span>
-    </li>
-    {% endif %}
-    <li>
-    发布于: <span class="item-published">{{obj.published}}</span>
-    </li>
-    <li>
-    <a href="{{obj.link}}" target="_blank">阅读原文...</a>
-    </li>
-</ul>
+        <ul class="inline unstyled muted">
+            <li>
+            来自: <a href="{{obj.feed.get_absolute_url}}">{{obj.feed.title}}</a>
+            </li>
+            {% if obj.author %}
+            <li>
+            作者: <span class="item-author">{{obj.author}}</span>
+            </li>
+            {% endif %}
+            <li>
+            发布于: <span class="item-published">{{obj.published}}</span>
+            </li>
+            <li>
+            <a href="{{obj.link}}" target="_blank">阅读原文...</a>
+            </li>
+        </ul>
     </div>
     <div class="span4">
-<div class="pull-right kindleWidget"
-    style="display:inline-block;padding:3px;cursor:pointer;font-size:11px;font-family:Arial;white-space:nowrap;line-height:1;border-radius:3px;border:#ccc thin solid;color:black;background:transparent url('https://d1xnn692s7u6t6.cloudfront.net/button-gradient.png') repeat-x;background-size:contain;">
-    <img style="vertical-align:middle;margin:0;padding:0;border:none;"
-    src="https://d1xnn692s7u6t6.cloudfront.net/white-25.png" />
-    <span style="vertical-align:middle;margin-left:5px;">Send to Kindle</span>
-</div>
+        <div class="pull-right kindleWidget">
+            <img src="https://d1xnn692s7u6t6.cloudfront.net/white-25.png" />
+            <span>推送到 Kindle</span>
+        </div>
     </div>
 </div>
 
@@ -52,6 +50,26 @@
     color:black;
     background:transparent url('https://d1xnn692s7u6t6.cloudfront.net/button-gradient.png') repeat-x;
     background-size:contain;
+}
+
+.kindleWidget img {
+    vertical-align:middle;
+    margin:0;
+    padding:0;
+    border:none;
+}
+
+.kindleWidget span {
+    vertical-align:middle;
+    margin-left:5px;
+}
+
+.item-meta {
+    margin-bottom: 10px;
+}
+
+.item-meta ul {
+    margin-top: 5px;
 }
 </style>
 {% endblock %}
