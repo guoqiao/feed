@@ -5,5 +5,8 @@ from . import models as m
 
 @task()
 def parse(url):
-    obj = m.Feed(url=url)
+    try:
+        obj = m.Feed.objects.get(url=url)
+    except:
+        obj = m.Feed(url=url)
     obj.parse()
