@@ -38,7 +38,7 @@ h2
 {
 text-indent: 0;
 text-align: center;
-margin: 50px 0 0 0;
+margin: 50px 0 40px 0;
 font-size: 1.5em;
 font-weight: bold;
 page-break-before: always;
@@ -47,6 +47,7 @@ page-break-before: always;
 h3
 {
 text-indent: 0;
+margin: 30px 0 20px 0;
 text-align: left;
 font-size: 1.4em;
 font-weight: bold;

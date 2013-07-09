@@ -19,7 +19,7 @@
 {% for feed in feeds %}
 <navPoint id="feed{{feed.pk}}" playOrder="{{forloop.counter}}">
 <navLabel>
-    <text>{{feed.title}}</text>
+    <text>xxx{{feed.title}}</text>
 </navLabel>
 <content src="content.html#feed{{feed.pk}}"/>
 </navPoint>

@@ -5,18 +5,15 @@
 {% block content %}
     <h2>目录</h2>
     {% for feed in feeds %}
-        <p class="toctext">
+    <h3>
         <a href="content.html#feed{{feed.pk}}">{{feed.title}}</a>
-        </p>
+    </h3>
         <ol>
         {% for item in feed.recent %}
             <li>
-            <p class="toctext2">
             <a href="content.html#item{{item.pk}}">{{item.title}}</a>
-            </p>
             </li>
         {% endfor %}
         </ol>
-        <mbp:pagebreak/>
     {% endfor %}
 {% endblock %}

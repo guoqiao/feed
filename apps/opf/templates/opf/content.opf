@@ -15,17 +15,16 @@
 </metadata>
 <manifest>
 <item href="toc.ncx" id="ncx" media-type="application/x-dtbncx+xml" />
-<item href="cover.html" id="cover" media-type="application/xhtml+xml"/>
 <item href="toc.html" id="toc" media-type="application/xhtml+xml"/>
 <item href="content.html" id="content" media-type="application/xhtml+xml"/>
 <item href="cover.jpg" id="cover-image" media-type="image/jpeg" />
 </manifest>
 <spine toc="ncx">
-<itemref idref="cover"/>
+<itemref idref="cover-image"/>
 <itemref idref="toc"/>
 <itemref idref="content" />
 </spine>
 <guide>
-<reference href="toc.html" type="text" title="contents"/>
+<reference href="toc.html" type="toc" title="Table of Contents"/>
 </guide>
 </package>
