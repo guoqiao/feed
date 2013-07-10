@@ -12,7 +12,9 @@
 <small class="muted">{{item.published}}</small>
 {% endif %}
 <div>{{item.description|safe}}</div>
+{% if not forloop.last %}
 <hr />
+{% endif %}
 </li>
 {% endfor %}
 </ul>
