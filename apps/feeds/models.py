@@ -47,8 +47,8 @@ class Feed(Common):
     def rm_old(self):
         pass
 
-    def favicon(self):
-        return '%s/favicon.ico' % self.link.strip('/')
+    def get_favicon(self):
+        return self.favicon or '%s/favicon.ico' % self.link.strip('/')
 
     @models.permalink
     def get_absolute_url(self):
