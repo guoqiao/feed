@@ -18,19 +18,29 @@
     <blockquote>{{obj.description}}</blockquote>
     <ul class="inline unstyled muted">
         <li>
-        <a href="{{obj.link}}" target="_blank">直接访问</a>
-        </li>
-        <li>
-        <a href="{{obj.url}}" target="_blank">查看RSS</a>
-        </li>
-        <li>
+        <small>
         更新 {{obj.parsed}}
+        </small>
         </li>
         <li>
+        <small>
         订阅 {{obj.users.count}}
+        </small>
         </li>
         <li>
+        <small>
         文章 {{obj.item_set.count}}
+        </small>
+        </li>
+        <li>
+        <small>
+        <a href="{{obj.link}}" target="_blank">直接访问</a>
+        </small>
+        </li>
+        <li>
+        <small>
+        <a href="{{obj.url}}" target="_blank">查看RSS</a>
+        </small>
         </li>
     </ul>
 </li>
