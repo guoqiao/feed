@@ -128,6 +128,5 @@ class Item(Common):
     def make_full_text(self):
         url = 'http://ftr.fivefilters.org/makefulltextfeed.php?url=%s' % self.link
         d = fp.parse(url)
-        if d.entries:
-            e = d.entries[0]
-            self.content = e.description
+        for e in d.entries:
+            self.content += e.get('description','')

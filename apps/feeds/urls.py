@@ -7,6 +7,6 @@ urlpatterns = patterns('feeds.views',
     url(r'^add$', 'add', name='add'),
     url(r'^feed/(?P<pk>\d+)$', 'feed', name='feed'),
     url(r'^feed/(?P<pk>\d+)/delete$', 'feed_delete', name='feed_delete'),
-    url(r'^feed/(?P<pk>\d+)/clear$', 'feed_clear', name='feed_clear'),
+    url(r'^feed/(?P<pk>\d+)/update$', 'feed_update', name='feed_update'),
     url(r'^item/(?P<pk>\d+)$', 'item', name='item'),
 )

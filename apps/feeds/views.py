@@ -16,7 +16,7 @@ def feed(request,pk):
     return render(request, 'feeds/feed.html', {'obj': obj})
 
 @login_required
-def feed_clear(request,pk):
+def feed_update(request,pk):
     obj = m.Feed.objects.get(pk=pk)
     obj.item_set.all().delete()
     obj.etag = ""
@@ -24,7 +24,8 @@ def feed_clear(request,pk):
     obj.save()
     t.parse.delay(obj.url)
     messages.success(request,'正在更新')
-    return redirect('home')
+    url = request.GET.get('next','home')
+    return redirect(url)
 
 @login_required
 def feed_delete(request,pk):
