@@ -11,7 +11,7 @@
 <a href="{{item.get_absolute_url}}"><h4>{{item.title}}</h4></a>
 {% include "feeds/item_meta.html" %}
 <p></p>
-<div>{{item.description|safe}}</div>
+<div class="item-content">{{item.description|safe}}</div>
 {% if not forloop.last %}
 <hr />
 {% endif %}

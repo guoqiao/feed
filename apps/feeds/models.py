@@ -37,7 +37,6 @@ class Feed(Common):
     modified = models.DateTimeField(blank=True,null=True)
     parsed = models.DateTimeField(null=True)
     status = models.IntegerField(default=0)
-    full = models.IntegerField(default=0)
     tags = TaggableManager(verbose_name='标签',help_text='关键字之间用英文逗号分隔',blank=True)
     users =models.ManyToManyField(User,blank=True)
 
@@ -46,6 +45,9 @@ class Feed(Common):
 
     def rm_old(self):
         pass
+
+    def favicon(self):
+        return '%s/favicon.ico' % self.link.strip('/')
 
     @models.permalink
     def get_absolute_url(self):
