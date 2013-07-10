@@ -4,13 +4,13 @@
 <ul class="unstyled well">
 {% include "feeds/feed_meta.html"%}
 </ul>
+<h4>文章列表:</h4>
 <ul class="unstyled well">
 {% for item in obj.item_set.all %}
 <li class='item'>
 <a href="{{item.get_absolute_url}}"><h4>{{item.title}}</h4></a>
-{% if item.published %}
-<small class="muted">{{item.published}}</small>
-{% endif %}
+{% include "feeds/item_meta.html" %}
+<p></p>
 <div>{{item.description|safe}}</div>
 {% if not forloop.last %}
 <hr />

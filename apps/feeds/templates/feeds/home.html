@@ -4,7 +4,9 @@
 <ul class="unstyled well">
 {% for obj in objs %}
 {% include "feeds/feed_meta.html"%}
+{% if not forloop.last %}
 <hr />
+{% endif %}
 {% endfor %}
 </ul>
 {% endblock %}

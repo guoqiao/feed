@@ -1,0 +1,21 @@
+<ul class="inline unstyled muted">
+    {% if item.published %}
+    <li>
+    <small>
+    发布于: <span class="item-published">{{item.published}}</span>
+    </small>
+    </li>
+    {% endif %}
+    {% if item.author %}
+    <li>
+    <small>
+    作者: <span class="item-author">{{item.author}}</span>
+    </small>
+    </li>
+    {% endif %}
+    <li>
+    <small>
+    <a href="{{item.link}}" target="_blank">阅读原文</a>
+    </small>
+    </li>
+</ul>

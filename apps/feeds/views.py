@@ -36,7 +36,7 @@ def feed_delete(request,pk):
 
 def item(request,pk):
     obj = m.Item.objects.get(pk=pk)
-    return render(request, 'feeds/item.html', {'obj': obj})
+    return render(request, 'feeds/item.html', {'item': obj})
 
 def add(request):
     F = f.FeedForm

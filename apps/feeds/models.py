@@ -103,11 +103,10 @@ class Feed(Common):
             item.title = e.get('title','')
             item.author = e.get('author','')
             item.description = e.get('description','')
-            if self.full and 'content' in e:
+            if 'content' in e:
                 for c in  e.content:
                     item.content += c.get('value','')
-                print item.content
-            else:
+            if not item.content:
                 item.make_full_text()
             if 'published_parsed' in e:
                 item.published = mkdt(e.published_parsed)
