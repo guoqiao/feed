@@ -1,17 +1,6 @@
 <li class='feed'>
-    <div class="btn-group pull-right">
-        <button class="btn btn-mini btn-info">
-            <i class="icon-star-empty"></i>订阅
-        </button>
-        {% if user.is_superuser %}
-        <a href="{% url feed_update obj.pk %}?next={{request.path}}" class="btn btn-mini btn-success">
-            <i class="icon-refresh"></i>更新</a>
-        <a href="{% url feed_delete obj.pk %}"
-            onclick="return confirm('确定删除?');"
-            class="btn btn-mini btn-danger">
-            <i class="icon-trash"></i>删除</a>
-        {% endif %}
-    </div>
+    {% load feeds_extra %}
+    {% feed_btns obj %}
     <a href="{% url feed obj.pk %}">
     <h3>
         <img class="img img-rounded" alt="favicon"

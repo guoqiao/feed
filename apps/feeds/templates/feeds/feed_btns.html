@@ -1,0 +1,21 @@
+<div class="btn-group pull-right" pk="{{feed.pk}}">
+{% if user.is_authenticated %}
+    {% if user in feed.users.all %}
+    {% include "feeds/feed_btn_unfollow.html" %}
+    {% else %}
+    {% include "feeds/feed_btn_follow.html" %}
+    {% endif %}
+    {% if user.is_superuser %}
+    <a href="{% url feed_update feed.pk %}" class="btn btn-mini btn-success">
+        <i class="icon-refresh"></i>更新</a>
+    <a href="{% url feed_delete feed.pk %}"
+        onclick="return confirm('确定删除?');"
+        class="btn btn-mini btn-danger">
+        <i class="icon-trash"></i>删除</a>
+    {% endif %}
+{% else %}
+    <a class="btn btn-mini btn-info" href="#">
+        <i class="icon-star-empty"></i>订阅
+    </a>
+{% endif %}
+</div>

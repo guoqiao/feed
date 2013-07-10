@@ -4,6 +4,11 @@ from django.template.defaultfilters import stringfilter
 
 register = Library()
 
+@register.inclusion_tag('feeds/feed_btns.html',takes_context=True)
+def feed_btns(context,feed):
+    user = context['user']
+    return {'feed':feed,'user':user}
+
 @register.filter
 @stringfilter
 def shortzh(value, arg):
@@ -26,4 +31,3 @@ def shortzh(value, arg):
     except (ValueError, TypeError):
         return value # Fail silently.
 
-#register.filter('truncatehanzi', truncatehanzi)

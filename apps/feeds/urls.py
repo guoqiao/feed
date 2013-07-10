@@ -8,5 +8,6 @@ urlpatterns = patterns('feeds.views',
     url(r'^feed/(?P<pk>\d+)$', 'feed', name='feed'),
     url(r'^feed/(?P<pk>\d+)/delete$', 'feed_delete', name='feed_delete'),
     url(r'^feed/(?P<pk>\d+)/update$', 'feed_update', name='feed_update'),
+    url(r'^feed/xfollow$', 'feed_xfollow', name='feed_xfollow'),
     url(r'^item/(?P<pk>\d+)$', 'item', name='item'),
 )

@@ -148,6 +148,7 @@ INSTALLED_APPS = (
     #'south',
     #'mailer',
     'taggit',
+    'annoying',
     #'json_field',
     #'django_extensions',
 

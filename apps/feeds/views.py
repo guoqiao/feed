@@ -3,6 +3,9 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.template.loader import render_to_string as r2s
+from annoying.functions import get_object_or_None
+from annoying.decorators import ajax_request
 from . import models as m
 from . import forms  as f
 from . import tasks  as t
@@ -26,6 +29,22 @@ def feed_update(request,pk):
     messages.success(request,'正在更新')
     url = request.GET.get('next','home')
     return redirect(url)
+
+@ajax_request
+@login_required
+def feed_xfollow(request):
+    pk = request.GET.get('pk','')
+    obj = m.Feed.objects.get(pk=pk)
+    user = request.user
+    if user in obj.users.all():
+        obj.users.remove(user)
+        x = ''
+    else:
+        obj.users.add(request.user)
+        x = 'un'
+    template = 'feeds/feed_btn_%sfollow.html' % x
+    html = r2s(template,{})
+    return {'ret':'ok','html':html}
 
 @login_required
 def feed_delete(request,pk):
