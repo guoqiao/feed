@@ -38,7 +38,8 @@ class Feed(Common):
     parsed = models.DateTimeField(null=True)
     status = models.IntegerField(default=0)
     tags = TaggableManager(verbose_name='标签',help_text='关键字之间用英文逗号分隔',blank=True)
-    users =models.ManyToManyField(User,blank=True)
+    users = models.ManyToManyField(User,blank=True)
+    favicon = models.CharField(max_length=200,blank=True)
 
     class Meta:
         ordering = ['-born']
