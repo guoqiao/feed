@@ -4,11 +4,11 @@
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
-            <a class="brand" href="{% url home %}"></a>
+            <a class="brand {{css_home}}" href="{% url home %}"></a>
 
             <ul class="nav">
-                <li class=""><a href=""><i class="icon-fire"></i>热门</a></li>
-                <li class=""><a href=""><i class="icon-star-empty"></i>我的订阅</a></li>
+                <li class="{{css_hot}}"><a href="{% url hot %}"><i class="icon-fire"></i>热门</a></li>
+                <li class="{{css_mine}}"><a href="{% url mine %}"><i class="icon-star-empty"></i>我的订阅</a></li>
             </ul>
 
             <form class="navbar-search" action="" method="get">
@@ -16,7 +16,7 @@
             </form>
             <ul class="nav pull-right">
                 {% if user.is_authenticated %}
-                <li class="{{active_upload}}"><a href="{% url add %}">
+                <li class="{{css_add}}"><a href="{% url add %}">
                     <i class="icon-plus"></i>RSS
                 </a></li>
                 <li class=""><a href="">guoqiao@gmail.com</a></li>

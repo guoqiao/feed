@@ -3,6 +3,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.db.models import Count
 from django.template.loader import render_to_string as r2s
 from annoying.functions import get_object_or_None
 from annoying.decorators import ajax_request
@@ -12,7 +13,23 @@ from . import tasks  as t
 
 def home(request):
     objs = m.Feed.objects.all()
-    return render(request, 'feeds/home.html', {'objs': objs})
+    ctx = {'objs': objs}
+    ctx['css_home'] = 'active'
+    return render(request, 'feeds/home.html', ctx)
+
+@login_required
+def hot(request):
+    objs = m.Feed.objects.all().annotate(count=Count('users')).order_by('-count','-born')
+    ctx = {'objs': objs}
+    ctx['css_hot'] = 'active'
+    return render(request, 'feeds/home.html', ctx)
+
+@login_required
+def mine(request):
+    objs = request.user.feed_set.all()
+    ctx = {'objs': objs}
+    ctx['css_mine'] = 'active'
+    return render(request, 'feeds/home.html', ctx)
 
 def feed(request,pk):
     obj = m.Feed.objects.get(pk=pk)
@@ -69,4 +86,5 @@ def add(request):
             messages.info(request,'正在解析,稍等片刻:)')
             return redirect('home')
     ctx = {'form':form}
+    ctx['css_add'] = 'active'
     return render(request, 'feeds/add.html', ctx)

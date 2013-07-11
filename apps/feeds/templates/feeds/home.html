@@ -3,10 +3,13 @@
 {% block left %}
 <ul class="unstyled well">
 {% for obj in objs %}
-{% include "feeds/feed_meta.html"%}
-{% if not forloop.last %}
-<hr />
-{% endif %}
+    {% include "feeds/feed_meta.html"%}
+
+    {% if not forloop.last %}
+    <hr />
+    {% endif %}
+{% empty %}
+<h4>no feeds</h4>
 {% endfor %}
 </ul>
 {% endblock %}
