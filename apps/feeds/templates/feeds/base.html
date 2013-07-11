@@ -11,9 +11,10 @@
                 <li class="{{css_mine}}"><a href="{% url mine %}"><i class="icon-star-empty"></i>我的订阅</a></li>
             </ul>
 
-            <form class="navbar-search" action="" method="get">
+            <form class="navbar-search {{css_search}}" action="{% url search %}" method="get">
                 <input class="search-query" name="q" value="{{q}}" placeholder="搜索RSS" type="text" >
             </form>
+
             <ul class="nav pull-right">
                 {% if user.is_authenticated %}
                 <li class="{{css_add}}"><a href="{% url add %}">

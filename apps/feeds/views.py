@@ -4,6 +4,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Count
+from django.db.models import Q
 from django.template.loader import render_to_string as r2s
 from annoying.functions import get_object_or_None
 from annoying.decorators import ajax_request
@@ -17,9 +18,21 @@ def home(request):
     ctx['css_home'] = 'active'
     return render(request, 'feeds/home.html', ctx)
 
+def search(request):
+    objs = m.Feed.objects.all()
+    q = request.GET.get('q','')
+    if q:
+        q0 = Q(title__icontains=q)
+        q1 = Q(description__icontains=q)
+        objs = objs.filter(q0|q1).distinct()
+    ctx = {'objs': objs}
+    ctx['css_search'] = 'active'
+    ctx['q'] = q
+    return render(request, 'feeds/home.html', ctx)
+
 @login_required
 def hot(request):
-    objs = m.Feed.objects.all().annotate(count=Count('users')).order_by('-count','-born')
+    objs = m.Feed.objects.all().annotate(count=Count('users')).filter(count__gt=0).order_by('-count','-born')
     ctx = {'objs': objs}
     ctx['css_hot'] = 'active'
     return render(request, 'feeds/home.html', ctx)
