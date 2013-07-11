@@ -5,6 +5,7 @@ from __future__ import unicode_literals
 from datetime import datetime
 import feedparser as fp
 from django.db import models
+from django.conf import settings
 from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
 
@@ -47,8 +48,22 @@ class Feed(Common):
     def rm_old(self):
         pass
 
+    def test_favicon(self):
+        import httplib
+        conn = httplib.HTTPConnection(self.link)
+        conn.request('HEAD', '/favicon.ico')
+        response = conn.getresponse()
+        conn.close()
+        return response.status == 200
+
+    def default_favicon(self):
+        return '%s/favicon.ico' % self.link.strip('/')
+
+    def local_favicon(self):
+        return '%s/feeds/img/rss.ico' % settings.STATIC_URL.rstrip('/')
+
     def get_favicon(self):
-        return self.favicon or '%s/favicon.ico' % self.link.strip('/')
+        return self.favicon or self.default_favicon()
 
     @models.permalink
     def get_absolute_url(self):
@@ -62,8 +77,12 @@ class Feed(Common):
         d = fp.parse(self.url,etag=self.etag,modified=self.modified)
         # {'feed': {}, 'bozo': 1, 'bozo_exception': error(10054, ''), 'entries': []}
         if not d:
-            print 'parse fail'
+            print 'parse fail:dict empty'
             return
+        if 'bozo' in d:
+            if d.bozo == 1:
+                print 'parse fail: bozo=1'
+                return
         f = d.feed
         if not f:
             if 'bozo' in d:
@@ -74,6 +93,9 @@ class Feed(Common):
                 self.save()
             print d.debug_message
             return
+        if not self.test_favicon():
+            self.favicon = self.local_favicon()
+            print self.favicon
         if 'etag' in d:
             self.etag = d.etag.strip('"').strip("'")
         if 'modified_parsed' in d:

@@ -1,14 +1,12 @@
 <li class='feed'>
     {% load feeds_extra %}
     {% feed_btns obj %}
-    <a href="{% url feed obj.pk %}">
     <h3>
         <img class="img img-rounded" alt="favicon"
-            style="height: 24px; width: 24px;"
+            style="height:32px;width:32px;vertical-align:midele;"
             src="{{obj.get_favicon}}">
-        {{obj.title}}
+        <a href="{% url feed obj.pk %}">{{obj.title}}</a>
     </h3>
-    </a>
     <blockquote>{{obj.description}}</blockquote>
     <ul class="inline unstyled muted">
         <li>
